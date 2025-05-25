@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoDelay.GG - Tweaking Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00171B 0%, #001f26 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 23, 27, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid #46BBD0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #46BBD0, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #46BBD0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(70, 187, 208, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(70, 187, 208, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #46BBD0, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #46BBD0, #00a8cc);
+            color: #00171B;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(70, 187, 208, 0.3);
+        }
+
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #46BBD0, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: rgba(70, 187, 208, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(70, 187, 208, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #46BBD0;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .plan-card {
+            background: rgba(0, 23, 27, 0.7);
+            border: 2px solid rgba(70, 187, 208, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #46BBD0, #00a8cc);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: #46BBD0;
+        }
+
+        .plan-card.featured {
+            border-color: #46BBD0;
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured::before {
+            height: 6px;
+        }
+
+        .plan-title {
+            font-size: 1.8rem;
+            color: #46BBD0;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .plan-price {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-ars {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .price-usd {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-left: 0.5rem;
+        }
+
+        .plan-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #46BBD0;
+            font-weight: bold;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(70, 187, 208, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(70, 187, 208, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: #46BBD0;
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #46BBD0;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: rgba(0, 23, 27, 0.95);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 2px solid #46BBD0;
+        }
+
+        .decorative-line {
+            text-align: center;
+            margin: 2rem 0;
+            color: #46BBD0;
+            font-size: 1.2rem;
+        }
+
+        .discord-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #5865F2, #4752C4);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .discord-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+
+        .discord-icon {
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                color: #46BBD0;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-card.featured {
+                transform: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">NoDelay.GG</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home.GG</a></li>
+                <li><a href="#about">About.GG</a></li>
+                <li><a href="#plans">Plans.GG</a></li>
+                <li><a href="#contact">Contact.GG</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>NoDelay.GG</h1>
+                <p>Optimización profesional para gamers. Reduce el delay, aumenta los FPS y domina la competencia.</p>
+                <a href="#plans" class="cta-button">Explorar Planes.GG</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About.GG</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>En <strong>NoDelay.GG</strong>, nos especializamos en optimizar sistemas para lograr el máximo
+                        rendimiento en juegos. Somos un equipo apasionado por el tweaking y el rendimiento,
+                        comprometidos con brindar soluciones reales a jugadores que buscan más fluidez, menos delay y
+                        mejores FPS.</p>
+                    <br>
+                    <p>Diseñamos cada optimización de forma personalizada, adaptándonos al hardware y las necesidades de
+                        cada usuario. Utilizamos métodos avanzados que van más allá de los típicos ajustes básicos,
+                        priorizando siempre la estabilidad y la experiencia en cada partida.</p>
+                    <br>
+                    <p>Buscamos demostrar con resultados que un buen tweak marca la diferencia. Cada sistema optimizado
+                        es una prueba más de que el rendimiento no depende solo del hardware.</p>
+                </div>
+                <div class="about-stats fade-in">
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div>Sistemas Optimizados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0ms</div>
+                        <div>Delay Real Alcanzado</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50%+</div>
+                        <div>Mejora Promedio FPS</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div>Soporte Post-Servicio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="plans" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Plans.GG</h2>
+            <div class="plans-grid">
+                <div class="plan-card fade-in">
+                    <h3 class="plan-title">StartBoost</h3>
+                    <div class="plan-price">
+                        <span class="price-ars">$8,000 ARS</span>
+                        <span class="price-usd">/ $8.50 USD</span>
+                    </div>
+                    <p class="plan-description">Optimización Básica - Optimización rápida y efectiva para mejorar tu
+                        experiencia de juego, reducir recursos innecesarios y obtener un boost estable en FPS.</p>
+                    <div class="decorative-line">⋅───⊱༺ ♰ ༻⊰───⋅</div>
+                    <ul class="plan-features">
+                        <li>Tweaks base para Windows 10/11</li>
+                        <li>Configuración del panel de control gráfico (NVIDIA / AMD)</li>
+                        <li>Ajustes para Fortnite (recomendado)</li>
+                        <li>Modificaciones en tus aplicaciones activas</li>
+                        <li>Comandos CMD específicos para rendimiento</li>
+                        <li>FPS más estables</li>
+                        <li>Menor lag en mouse, teclado y control</li>
+                        <li>Power Plan personalizado</li>
+                        <li>Limpieza de archivos innecesarios</li>
+                        <li>Ajustes de launchers (Steam, Epic, Riot...)</li>
+                        <li>Resolución optimizada</li>
+                        <li>Recomendaciones según tu hardware</li>
+                    </ul>
+                </div>
+
+                <div class="plan-card featured fade-in">
+                    <h3 class="plan-title">ProPulse</h3>
+                    <div class="plan-price">
+                        <span class="price-ars">$15,000 ARS</span>
+                        <span class="price-usd">/ $15.50 USD</span>
+                    </div>
+                    <p class="plan-description">Optimización Avanzada - Ideal para jugadores competitivos o streamers.
+                        Reducción total de delay, optimización avanzada del sistema y configuración extrema de red,
+                        juegos y apps de stream.</p>
+                    <div class="decorative-line">⋅───⊱༺ ♰ ༻⊰───⋅</div>
+                    <ul class="plan-features">
+                        <li>Todo lo incluido en StartBoost +</li>
+                        <li>Tweaks avanzados de Windows 10/11</li>
+                        <li>Configuración profunda del sistema</li>
+                        <li>Reducción máxima de procesos en segundo plano</li>
+                        <li>Reducción de delay avanzado (0 Delay real)</li>
+                        <li>Boost de FPS avanzado</li>
+                        <li>Power Plan personalizado avanzado</li>
+                        <li>Ajustes CMD y Regedit avanzados</li>
+                        <li>Reducción de ping más efectiva</li>
+                        <li>Configuración de red</li>
+                        <li>Eliminación de malware básico</li>
+                        <li>Ajustes prioritarios para juegos</li>
+                        <li>Configuración avanzada de NVIDIA/AMD</li>
+                        <li>Optimización CPU, GPU y RAM</li>
+                        <li>Resolución optimizada avanzada (opcional)</li>
+                        <li>Limpieza profunda del sistema</li>
+                        <li>Eliminación de apps innecesarias</li>
+                        <li>Ajustes del administrador de dispositivos</li>
+                        <li>Aumento de Hz del monitor</li>
+                        <li>Ajustes avanzados para cada uno de tus juegos</li>
+                        <li>Configuración optimizada para Discord y Spotify</li>
+                    </ul>
+                </div>
+
+                <div class="plan-card fade-in">
+                    <h3 class="plan-title">UltraSync</h3>
+                    <div class="plan-price">
+                        <span class="price-ars">$27,000 ARS</span>
+                        <span class="price-usd">/ $27.50 USD</span>
+                    </div>
+                    <p class="plan-description">Optimización Máxima - Una instalación completamente limpia para lograr
+                        el máximo rendimiento posible. Sistema desde cero, sin bloatware, ultra optimizado.</p>
+                    <div class="decorative-line">⋅───⊱༺ ♰ ༻⊰───⋅</div>
+                    <ul class="plan-features">
+                        <li>Todo lo incluido en ProPulse +</li>
+                        <li>Instalación limpia de Windows 10/11</li>
+                        <li>Configuración de BIOS para mejor arranque</li>
+                        <li>Instalación de drivers personalizados</li>
+                        <li>Activación de Windows</li>
+                        <li>Instalación y orden de tus programas</li>
+                        <li>Configuración de periféricos (mouse, teclado, headset...)</li>
+                        <li>Eliminación de bloatware y consumo innecesario</li>
+                        <li>Seguimiento y soporte post-instalación</li>
+                        <li><strong>*Requiere pendrive disponible* (8gb)</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact.GG</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🎮</div>
+                    <h3 class="contact-title">Discord</h3>
+                    <p class="contact-info">Únete a nuestro servidor de Discord para consultas rápidas y soporte en
+                        tiempo real</p>
+                    <br>
+                    <a href="https://discord.gg/2zr6gu7SvV" target="_blank" class="discord-button">
+                        <span class="discord-icon">💬</span>
+                        Unirse al Discord
+                    </a>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">Contáctanos por email para consultas detalladas o presupuestos
+                        personalizados</p>
+                    <br>
+                    <p class="contact-info"><strong>Email:</strong> nodelay.gg@gmail.com</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="opacity: 0.8;">Respuesta garantizada en menos de 24 horas • Soporte post-servicio incluido</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 NoDelay.GG - Tweakers.GG Professional Services. Todos los derechos reservados.</p>
+            <p style="opacity: 0.7; margin-top: 0.5rem;">Optimización profesional para gamers competitivos</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 23, 27, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 23, 27, 0.95)';
+            }
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function () {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+
+</html>
