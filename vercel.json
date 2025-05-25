@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/apps",
-      "dest": "/apps"
+      "dest": "/apps.html"
     },
     {
       "src": "/",
