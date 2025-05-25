@@ -2,11 +2,11 @@
   "routes": [
     {
       "src": "/apps",
-      "dest": "/public/apps"
+      "dest": "/apps"
     },
     {
       "src": "/",
-      "dest": "/public/index.html"
+      "dest": "/index.html"
     }
   ]
 }
