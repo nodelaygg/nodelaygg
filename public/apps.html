@@ -423,6 +423,45 @@
         .application-success p {
             margin-bottom: 1rem;
         }
+
+        .custom-select-wrapper {
+            position: relative;
+            user-select: none;
+            border-radius: 8px;
+        }
+
+        .custom-select-trigger {
+            background: rgba(70, 187, 208, 0.1);
+            border: 1px solid rgba(70, 187, 208, 0.3);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .custom-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 23, 27, 0.95);
+            border: 1px solid #46BBD0;
+            border-radius: 8px;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            margin-top: 0.2rem;
+        }
+
+        .custom-option {
+            padding: 0.8rem 1rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .custom-option:hover {
+            background-color: rgba(70, 187, 208, 0.2);
+        }
     </style>
 </head>
 
@@ -544,14 +583,16 @@
                         <input type="number" id="age" name="age" min="13" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="timezone">Timezone</label>
-                        <select id="timezone" name="timezone" required>
-                            <option value="">Select your timezone</option>
-                            <option value="Chile">Chile</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Otra">Otra</option>
-                        </select>
+                    <div class="form-group"><label for="timezone">Timezone</label>
+                        <div class="custom-select-wrapper">
+                            <div class="custom-select-trigger">Selecciona tu pais</div>
+                            <div class="custom-options">
+                                <span class="custom-option" data-value="Chile">Chile</span>
+                                <span class="custom-option" data-value="Argentina">Argentina</span>
+                                <span class="custom-option" data-value="Otra">Otra</span>
+                            </div>
+                            <input type="hidden" name="timezone" id="timezone" required>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -624,7 +665,7 @@
             observer.observe(el);
         });
 
-        
+
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -654,12 +695,12 @@
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         mobileOverlay.addEventListener('click', closeMobileMenu);
 
-        
+
         mobileLinks.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
-        
+
         const applyButtons = document.querySelectorAll('.apply-button');
         const applicationFormSection = document.getElementById('application-form');
         const positionTitle = document.getElementById('position-title');
