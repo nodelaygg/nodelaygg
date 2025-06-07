@@ -656,7 +656,6 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -671,7 +670,6 @@
             });
         });
 
-        // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -689,7 +687,6 @@
             observer.observe(el);
         });
 
-        // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -699,7 +696,6 @@
             }
         });
 
-        // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu');
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileOverlay = document.querySelector('.mobile-overlay');
@@ -720,7 +716,6 @@
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         mobileOverlay.addEventListener('click', closeMobileMenu);
 
-        // Close mobile menu when clicking on a link
         mobileLinks.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
