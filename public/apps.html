@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +75,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, rgba(70, 187, 208, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(70, 187, 208, 0.1) 0%, transparent 50%);
         }
@@ -371,7 +372,7 @@
             .nav-links {
                 display: none;
             }
-            
+
             .mobile-menu {
                 display: block;
             }
@@ -424,6 +425,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="container">
@@ -437,7 +439,7 @@
             </ul>
             <button class="mobile-menu">☰</button>
         </nav>
-        
+
         <!-- Mobile Navigation -->
         <div class="mobile-overlay"></div>
         <nav class="mobile-nav">
@@ -455,7 +457,8 @@
         <div class="container">
             <div class="hero-content fade-in">
                 <h1>Unete a nuestro team.GG</h1>
-                <p>Forma parte de NoDelay.GG como moderador, creador de contenidos o staff. Ayúdanos a hacer crecer la comunidad de optimización de gaming</p>
+                <p>Forma parte de NoDelay.GG como moderador, creador de contenidos o staff. Ayúdanos a hacer crecer la
+                    comunidad de optimización de gaming</p>
                 <a href="#applications" class="cta-button">Ver puestos.</a>
             </div>
         </div>
@@ -467,7 +470,8 @@
             <div class="application-grid">
                 <div class="application-card fade-in">
                     <h3 class="application-title">Moderador</h3>
-                    <p class="application-description">Ayude a mantener las normas de nuestra comunidad y preste apoyo a nuestros usuarios.</p>
+                    <p class="application-description">Ayude a mantener las normas de nuestra comunidad y preste apoyo a
+                        nuestros usuarios.</p>
                     <div class="decorative-line">⋅───⊱༺ ♰ ༻⊰───⋅</div>
                     <ul class="application-features">
                         <li>Moderar el servidor Discord y los canales sociales</li>
@@ -481,7 +485,8 @@
 
                 <div class="application-card fade-in">
                     <h3 class="application-title">Content Creator</h3>
-                    <p class="application-description">Crear contenidos atractivos sobre la optimización del juego y los servicios de NoDelay.GG.</p>
+                    <p class="application-description">Crear contenidos atractivos sobre la optimización del juego y los
+                        servicios de NoDelay.GG.</p>
                     <div class="decorative-line">⋅───⊱༺ ♰ ༻⊰───⋅</div>
                     <ul class="application-features">
                         <li>Producir contenidos para YouTube, TikTok, etc.</li>
@@ -497,7 +502,8 @@
 
                 <div class="application-card fade-in">
                     <h3 class="application-title">Tweaker</h3>
-                    <p class="application-description">Únase a nuestro equipo técnico para prestar servicios de optimización a los clientes.</p>
+                    <p class="application-description">Únase a nuestro equipo técnico para prestar servicios de
+                        optimización a los clientes.</p>
                     <div class="decorative-line">⋅───⊱༺ ♰ ༻⊰───⋅</div>
                     <ul class="application-features">
                         <li>Optimización de sistemas para clientes</li>
@@ -505,7 +511,8 @@
                         <li>Proporcionar apoyo técnico</li>
                         <li>Recibir una remuneración competitiva</li>
                     </ul>
-                    <button class="cta-button apply-button" data-position="Optimization Specialist">Aplica Ahora.</button>
+                    <button class="cta-button apply-button" data-position="Optimization Specialist">Aplica
+                        Ahora.</button>
                 </div>
             </div>
         </div>
@@ -516,27 +523,27 @@
             <h2 class="section-title fade-in">Application.GG</h2>
             <div class="application-card fade-in">
                 <h3 class="application-title" id="position-title">Position Title</h3>
-                <form id="team-application" class="application-form">
+                <form id="team-application" class="application-form" method="POST">
                     <div class="form-group">
                         <label for="full-name">Nombre completo</label>
                         <input type="text" id="full-name" name="full-name" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="discord-tag">Discord Tag (e.g., User1234)</label>
                         <input type="text" id="discord-tag" name="discord-tag" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Direccion de correo</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="age">Edad</label>
                         <input type="number" id="age" name="age" min="13" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="timezone">Timezone</label>
                         <select id="timezone" name="timezone" required>
@@ -546,31 +553,33 @@
                             <option value="Otra">Otra</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="experience">Experiencia relevante</label>
                         <textarea id="experience" name="experience" required></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="why-join">Porque quieres ser parte de NoDelay.GG?</label>
                         <textarea id="why-join" name="why-join" required></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="availability">Disponibilidad (horas)</label>
                         <input type="number" id="availability" name="availability" min="1" max="168" required>
                     </div>
-                    
+
                     <input type="hidden" id="position" name="position">
-                    
+
                     <button type="submit" class="submit-button">Enviar formulario</button>
                 </form>
-                
+
                 <div id="application-success" class="application-success">
                     <h3>Formulario enviado!</h3>
-                    <p>Gracias por solicitar formar parte del equipo de NoDelay.GG. Hemos recibido tu solicitud y la revisaremos en breve.</p>
-                    <p>Si tu solicitud se ajusta a nuestras necesidades, nos pondremos en contacto contigo a través de Discord o por correo electrónico en un plazo de 7 a 10 días.</p>
+                    <p>Gracias por solicitar formar parte del equipo de NoDelay.GG. Hemos recibido tu solicitud y la
+                        revisaremos en breve.</p>
+                    <p>Si tu solicitud se ajusta a nuestras necesidades, nos pondremos en contacto contigo a través de
+                        Discord o por correo electrónico en un plazo de 7 a 10 días.</p>
                     <a href="/apps" class="cta-button">Regresar</a>
                 </div>
             </div>
@@ -585,22 +594,19 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 const headerHeight = document.querySelector('header').offsetHeight;
                 const targetPosition = target.offsetTop - headerHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
             });
         });
-
-        // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -618,7 +624,7 @@
             observer.observe(el);
         });
 
-        // Header background on scroll
+        
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -628,7 +634,6 @@
             }
         });
 
-        // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu');
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileOverlay = document.querySelector('.mobile-overlay');
@@ -649,12 +654,12 @@
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         mobileOverlay.addEventListener('click', closeMobileMenu);
 
-        // Close mobile menu when clicking on a link
+        
         mobileLinks.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
-        // Application form handling
+        
         const applyButtons = document.querySelectorAll('.apply-button');
         const applicationFormSection = document.getElementById('application-form');
         const positionTitle = document.getElementById('position-title');
@@ -667,10 +672,21 @@
                 const position = button.getAttribute('data-position');
                 positionTitle.textContent = position;
                 positionInput.value = position;
-                
+
+                let actionUrl = "";
+                if (position === "Moderator") {
+                    actionUrl = "https://formspree.io/f/mldngykw";
+                } else if (position === "Content Creator") {
+                    actionUrl = "https://formspree.io/f/meokebwv";
+                } else if (position === "Optimization Specialist") {
+                    actionUrl = "https://formspree.io/f/xovwjozr";
+                }
+
+                applicationForm.setAttribute("action", actionUrl);
+
                 document.getElementById('applications').style.display = 'none';
                 applicationFormSection.style.display = 'block';
-                
+
                 window.scrollTo({
                     top: applicationFormSection.offsetTop - document.querySelector('header').offsetHeight,
                     behavior: 'smooth'
@@ -678,22 +694,35 @@
             });
         });
 
-        applicationForm.addEventListener('submit', (e) => {
+        applicationForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Here you would typically send the form data to your server
-            // For demonstration, we'll just show the success message
-            applicationForm.style.display = 'none';
-            applicationSuccess.style.display = 'block';
-            
-            // Scroll to success message
-            applicationSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Reset form for future submissions
-            setTimeout(() => {
-                applicationForm.reset();
-            }, 1000);
+
+            const formData = new FormData(applicationForm);
+            const actionUrl = applicationForm.getAttribute('action');
+
+            try {
+                const response = await fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    applicationForm.style.display = 'none';
+                    applicationSuccess.style.display = 'block';
+                    applicationSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    applicationForm.reset();
+                } else {
+                    alert("Hubo un error al enviar el formulario. Intentalo más tarde.");
+                }
+            } catch (err) {
+                alert("Error al conectar con el servidor de formularios.");
+                console.error(err);
+            }
         });
     </script>
 </body>
+
 </html>
